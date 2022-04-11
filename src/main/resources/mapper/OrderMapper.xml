@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.cloudShopping.order.OrderMapper">
+    <insert id="addOrder">
+        insert into order (id, user_id, name, price, number, order_time, status, type)
+        values (#{id}, #{userId}, #{name}, #{price}, #{number}, #{orderTime}, #{status}, #{type})
+    </insert>
+    <update id="updateOrder">
+        update order
+        set id=#{id},
+            user_id=#{userId},
+            name=#{name},
+            price=#{price},
+            number=#{number},
+            order_time=#{orderTime},
+            status=#{status},
+            type=#{type}
+        where id = #{id}
+    </update>
+
+    <select id="getOrderById" resultType="com.shopping.cloudShopping.order.Order">
+        select *
+        from order
+        where id ={#id}
+    </select>
+    <select id="getOrders" resultType="com.shopping.cloudShopping.order.Order">
+        select *
+        from order
+    </select>
+</mapper>

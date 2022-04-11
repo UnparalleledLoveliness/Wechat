@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.cloudShopping.user.UserMapper">
+    <insert id="addUser">
+        insert into user(username, password, name, log_date, status, score, type)
+        values (#{username}, #{password}, #{name}, #{logDate}, #{status}, #{score}, #{type})
+    </insert>
+
+    <update id="updateUser">
+        update user
+        set id=#{id},
+            username=#{username},
+            password=#{password},
+            name=#{name},
+            log_date=#{logDate},
+            status=#{status},
+            score=#{score},
+            type=#{type}
+        where id = #{id}
+    </update>
+
+    <select id="getUserByUsername" resultType="com.shopping.cloudShopping.user.User">
+        select *
+        from user
+        where username = #{username}
+    </select>
+
+    <select id="getUserById" resultType="com.shopping.cloudShopping.user.User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+</mapper>
