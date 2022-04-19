@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.cloudShopping.food.FoodMapper">
+    <insert id="addFood" useGeneratedKeys="true" keyProperty="id">
+        insert into food(shop_id, message, url, score, time, price,name,type)
+        values (#{shopId}, #{message}, #{url}, #{score}, #{time}, #{price}, #{name},#{type})
+    </insert>
+    <delete id="deleteFood">
+        delete  from  food where id=#{id}
+    </delete>
+    <select id="getFoodByShop" resultType="com.shopping.cloudShopping.food.Food">
+        select * from food where shop_id=#{id}
+    </select>
+    <select id="getFoodById" resultType="com.shopping.cloudShopping.food.Food">
+        select * from food where id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.cloudShopping.comment.CommentMapper">
+    <insert id="addComment" useGeneratedKeys="true" keyProperty="id">
+        insert into comment(food_id,time,user_id,content)
+        values (#{foodId}, #{time},#{userId}, #{content})
+    </insert>
+    <select id="getCommentByFoodId"
+            resultType="com.shopping.cloudShopping.comment.Comment">
+        select * from comment where food_id=#{id}
+    </select>
+    <select id="getCommentByUserIdAndFoodId"
+            resultType="com.shopping.cloudShopping.comment.Comment">
+        select * from comment where food_id=#{foodId} and user_id=#{userId}
+    </select>
+</mapper>
